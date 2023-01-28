@@ -1,14 +1,14 @@
 package main;
 
-import model.TipoVid;
-import model.TipoVid.Vidtipo;
-import model.Vid;
+
+import manager.Manager;
+
 
 public class Main {
 
-	public static void main(String[] args) {
-		//TipoVid tipoVid = new TipoVid(Vidtipo.BLANCA);
-		//Vid vid = new Vid(1, tipoVid, 1);
+	public static void main(String[] args) {		
+		Manager manager = new Manager();
+		manager.manager();
 	}
 
 }

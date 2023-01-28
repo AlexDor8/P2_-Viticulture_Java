@@ -3,35 +3,46 @@ package model;
 import java.io.Serializable;
 import java.util.ArrayList;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 @Entity
 @Table(name="Bodega")
 public class Bodega implements Serializable{
 	private static final long serialVersionUID = 1L;
+	
 	@Id
-	private int id_bodega;
+	@OneToOne(cascade = {CascadeType.ALL} )
+	@JoinColumn(name="id")
+	Entrada entrada;
+	@Column(name="nombre")
 	private String nombre;
+	@Transient
 	private ArrayList<Vid> vids;
 	
 	public Bodega() {
 		
 	}
-	
-	public Bodega(int id_bodega, String nombre, ArrayList<Vid> vids) {
-		this.id_bodega = id_bodega;
+
+	public Bodega(Entrada entrada, String nombre) {
+		this.entrada = entrada;
 		this.nombre = nombre;
-		this.vids = vids;
 	}
 
-	public int getId_bodega() {
-		return id_bodega;
+	public Entrada getEntrada() {
+		return entrada;
 	}
 
-	public void setId_bodega(int id_bodega) {
-		this.id_bodega = id_bodega;
+	public void setEntrada(Entrada entrada) {
+		this.entrada = entrada;
 	}
 
 	public String getNombre() {
@@ -52,9 +63,9 @@ public class Bodega implements Serializable{
 
 	@Override
 	public String toString() {
-		return "Bodega [id_bodega=" + id_bodega + ", nombre=" + nombre + ", vids=" + vids + "]";
+		return "Bodega [entrada=" + entrada + ", nombre=" + nombre + ", vids=" + vids + "]";
 	}
- 	
+	
 	
 	
 }

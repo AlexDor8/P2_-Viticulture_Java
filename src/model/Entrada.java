@@ -14,6 +14,7 @@ public class Entrada implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
+	@Column(name="id")
 	private int id;
 
 	private String instruccion;
@@ -36,5 +37,12 @@ public class Entrada implements Serializable {
 	public void setInstruccion(String instruccion) {
 		this.instruccion = instruccion;
 	}
+
+	@Override
+	public String toString() {
+		return "Entrada [id=" + id + ", instruccion=" + instruccion + "]";
+	}
+	
+	
 
 }

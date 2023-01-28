@@ -5,23 +5,37 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="Vid")
+@Table(name = "Vid")
 public class Vid {
 	@Id
 	private int id;
-	private TipoVid tipoVid;
 	private int cantidad;
+
+	private Vidtipo vidTipo;
 	
+	Bodega bodega;
 	
-	public Vid(int id, TipoVid tipoVid, int cantidad) {
-		this.id = id;
-		this.tipoVid = tipoVid;
-		this.cantidad = cantidad;
+	Campo campo;
+
+	public enum Vidtipo {
+		BLANCA, NEGRA
 	}
+
 	
+
 	public Vid() {
-		
+
 	}
+
+
+
+	public Vid(int id, int cantidad, Vidtipo vidTipo) {
+		super();
+		this.id = id;
+		this.cantidad = cantidad;
+		this.vidTipo = vidTipo;
+	}
+
 
 
 	public int getId() {
@@ -29,19 +43,11 @@ public class Vid {
 	}
 
 
+
 	public void setId(int id) {
 		this.id = id;
 	}
 
-
-	public TipoVid getTipoVid() {
-		return tipoVid;
-	}
-
-
-	public void setTipoVid(TipoVid tipoVid) {
-		this.tipoVid = tipoVid;
-	}
 
 
 	public int getCantidad() {
@@ -49,15 +55,23 @@ public class Vid {
 	}
 
 
+
 	public void setCantidad(int cantidad) {
 		this.cantidad = cantidad;
 	}
 
 
-	@Override
-	public String toString() {
-		return "Vid [id=" + id + ", tipoVid=" + tipoVid + ", cantidad=" + cantidad + "]";
+
+	public Vidtipo getVidTipo() {
+		return vidTipo;
 	}
+
+
+
+	public void setVidTipo(Vidtipo vidTipo) {
+		this.vidTipo = vidTipo;
+	}
+
 	
-	
+
 }
