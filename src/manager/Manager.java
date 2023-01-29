@@ -45,16 +45,20 @@ public class Manager {
 			case "B":
 				Bodega bodega = new Bodega(valores.get(i), instrucciones[1]);
 				bodegas.add(bodega);
-				manager.getTransaction().begin();
-				manager.persist(bodega);
-				manager.getTransaction().commit();
+				if(manager.createQuery("from Bodega b where b.id = '"+bodega.getEntrada().getId()+"'").getResultList().isEmpty()){
+					manager.getTransaction().begin();
+					manager.persist(bodega);
+					manager.getTransaction().commit();
+				}
 				break;
 			case "C":
 				Bodega ultimaAnadida = bodegas.get(bodegas.size()-1);
 				Campo campo = new Campo(valores.get(i), ultimaAnadida);
-				manager.getTransaction().begin();
-				manager.persist(campo);
-				manager.getTransaction().commit();
+				if(manager.createQuery("from Campo c where c.id = '"+campo.getEntrada().getId()+"'").getResultList().isEmpty()) {
+					manager.getTransaction().begin();
+					manager.persist(campo);
+					manager.getTransaction().commit();
+				}
 				break;
 			case "V":
 				break;

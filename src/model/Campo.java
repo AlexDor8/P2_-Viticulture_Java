@@ -17,7 +17,7 @@ public class Campo implements Serializable {
 	private static final long serialVersionUID = 1L;
 	@Id
 	@OneToOne(cascade = {CascadeType.ALL} )
-	@JoinColumn(name="id_campo")
+	@JoinColumn(name="id")
 	Entrada entrada;
 	@Transient
 	private ArrayList<Vid> vids;
