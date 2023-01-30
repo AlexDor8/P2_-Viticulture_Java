@@ -43,10 +43,6 @@ public class Manager {
 			String instruccion = valores.get(i).getInstruccion();
 			String[] instrucciones = instruccion.split(" ");
 			String tipo = instrucciones[0];
-			System.out.println(tipo);
-
-			ArrayList<Vid> vids;
-
 			switch (tipo) {
 			case "B":
 
