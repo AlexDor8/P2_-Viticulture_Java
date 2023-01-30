@@ -13,21 +13,21 @@ import javax.persistence.Table;
 import javax.persistence.Transient;
 
 @Entity
-@Table(name="Bodega")
-public class Bodega implements Serializable{
+@Table(name = "Bodega")
+public class Bodega implements Serializable {
 	private static final long serialVersionUID = 1L;
-	
+
 	@Id
-	@OneToOne(cascade = {CascadeType.ALL} )
-	@JoinColumn(name="id")
+	@OneToOne(cascade = { CascadeType.ALL })
+	@JoinColumn(name = "id")
 	Entrada entrada;
-	@Column(name="nombre")
+	@Column(name = "nombre")
 	private String nombre;
 	@Transient
 	private ArrayList<Vid> vids;
-	
+
 	public Bodega() {
-		
+
 	}
 
 	public Bodega(Entrada entrada, String nombre) {
@@ -63,7 +63,5 @@ public class Bodega implements Serializable{
 	public String toString() {
 		return "Bodega [entrada=" + entrada + ", nombre=" + nombre + ", vids=" + vids + "]";
 	}
-	
-	
-	
+
 }

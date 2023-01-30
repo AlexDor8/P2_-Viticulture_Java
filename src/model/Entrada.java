@@ -3,18 +3,17 @@ package model;
 import java.io.Serializable;
 import javax.persistence.*;
 
-
 /**
  * The persistent class for the Entrada database table.
  * 
  */
 @Entity
-@NamedQuery(name="Entrada.findAll", query="SELECT e FROM Entrada e")
+@NamedQuery(name = "Entrada.findAll", query = "SELECT e FROM Entrada e")
 public class Entrada implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@Column(name="id")
+	@Column(name = "id")
 	private int id;
 
 	private String instruccion;
@@ -42,7 +41,5 @@ public class Entrada implements Serializable {
 	public String toString() {
 		return "Entrada [id=" + id + ", instruccion=" + instruccion + "]";
 	}
-	
-	
 
 }

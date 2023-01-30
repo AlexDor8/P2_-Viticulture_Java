@@ -12,64 +12,48 @@ import javax.persistence.Table;
 import javax.persistence.Transient;
 
 @Entity
-@Table(name="Campo")
+@Table(name = "Campo")
 public class Campo implements Serializable {
 	private static final long serialVersionUID = 1L;
 	@Id
-	@OneToOne(cascade = {CascadeType.ALL} )
-	@JoinColumn(name="id")
+	@OneToOne(cascade = { CascadeType.ALL })
+	@JoinColumn(name = "id")
 	Entrada entrada;
 	@Transient
 	private ArrayList<Vid> vids = new ArrayList<Vid>();
-	
-	@OneToOne(cascade = {CascadeType.ALL} )
-	@JoinColumn(name="id_bodega")
+
+	@OneToOne(cascade = { CascadeType.ALL })
+	@JoinColumn(name = "id_bodega")
 	private Bodega bodega;
-	
-	
-	
+
 	public Campo() {
-		
+
 	}
-
-
 
 	public Campo(Entrada entrada, Bodega bodega) {
 		this.entrada = entrada;
 		this.bodega = bodega;
 	}
 
-
-
 	public Entrada getEntrada() {
 		return entrada;
 	}
-
-
 
 	public void setEntrada(Entrada entrada) {
 		this.entrada = entrada;
 	}
 
-
-
 	public ArrayList<Vid> getVids() {
 		return vids;
 	}
-
-
 
 	public void setVids(ArrayList<Vid> vids) {
 		this.vids = vids;
 	}
 
-
-
 	public Bodega getBodega() {
 		return bodega;
 	}
-
-
 
 	public void setBodega(Bodega bodega) {
 		this.bodega = bodega;
@@ -83,9 +67,5 @@ public class Campo implements Serializable {
 	public String toString() {
 		return "Campo [entrada=" + entrada + ", vids=" + vids + ", bodega=" + bodega + "]";
 	}
-	
-	
-	
-	
-	
+
 }
