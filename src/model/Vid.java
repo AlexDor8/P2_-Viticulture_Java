@@ -1,20 +1,32 @@
 package model;
 
+import java.io.Serializable;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "Vid")
-public class Vid {
+public class Vid implements Serializable{
+	private static final long serialVersionUID = 1L;
 	@Id
-	private int id;
+	@OneToOne(cascade = {CascadeType.ALL} )
+	@JoinColumn(name="id")
+	Entrada entrada;
 	private int cantidad;
 
-	private Vidtipo vidTipo;
+	private int vidTipo;
 	
+	@ManyToOne(cascade = {CascadeType.ALL} )
+	@JoinColumn(name="idBodega")
 	Bodega bodega;
-	
+	@ManyToOne(cascade = {CascadeType.ALL} )
+	@JoinColumn(name="idCampo")
 	Campo campo;
 
 	public enum Vidtipo {
@@ -29,23 +41,37 @@ public class Vid {
 
 
 
-	public Vid(int id, int cantidad, Vidtipo vidTipo) {
-		super();
-		this.id = id;
+	public Vid(Entrada entrada, int cantidad, int vidTipo, Bodega bodega, Campo campo) {
+		this.entrada = entrada;
+		this.cantidad = cantidad;
+		this.vidTipo = vidTipo;
+		this.bodega = bodega;
+		this.campo = campo;
+	}
+	
+	public Vid(Entrada entrada, int cantidad, int vidTipo, Campo campo) {
+		this.entrada = entrada;
+		this.cantidad = cantidad;
+		this.vidTipo = vidTipo;
+		this.campo = campo;
+	}
+
+	public Vid(Entrada entrada, int cantidad, int vidTipo) {
+		this.entrada = entrada;
 		this.cantidad = cantidad;
 		this.vidTipo = vidTipo;
 	}
 
 
 
-	public int getId() {
-		return id;
+	public Entrada getEntrada() {
+		return entrada;
 	}
 
 
 
-	public void setId(int id) {
-		this.id = id;
+	public void setEntrada(Entrada entrada) {
+		this.entrada = entrada;
 	}
 
 
@@ -60,18 +86,48 @@ public class Vid {
 		this.cantidad = cantidad;
 	}
 
-
-
-	public Vidtipo getVidTipo() {
+	public int getVidTipo() {
 		return vidTipo;
 	}
 
 
 
-	public void setVidTipo(Vidtipo vidTipo) {
+	public void setVidTipo(int vidTipo) {
 		this.vidTipo = vidTipo;
 	}
 
+
+
+	public Bodega getBodega() {
+		return bodega;
+	}
+
+
+
+	public void setBodega(Bodega bodega) {
+		this.bodega = bodega;
+	}
+
+
+
+	public Campo getCampo() {
+		return campo;
+	}
+
+
+
+	public void setCampo(Campo campo) {
+		this.campo = campo;
+	}
+
+
+
+	@Override
+	public String toString() {
+		return "Vid [entrada=" + entrada + ", cantidad=" + cantidad + ", vidTipo=" + vidTipo + "]";
+	}
+	
+	
 	
 
 }

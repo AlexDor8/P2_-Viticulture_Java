@@ -20,7 +20,7 @@ public class Campo implements Serializable {
 	@JoinColumn(name="id")
 	Entrada entrada;
 	@Transient
-	private ArrayList<Vid> vids;
+	private ArrayList<Vid> vids = new ArrayList<Vid>();
 	
 	@OneToOne(cascade = {CascadeType.ALL} )
 	@JoinColumn(name="id_bodega")
@@ -75,7 +75,9 @@ public class Campo implements Serializable {
 		this.bodega = bodega;
 	}
 
-
+	public void anadirVid(Vid vid) {
+		this.vids.add(vid);
+	}
 
 	@Override
 	public String toString() {
